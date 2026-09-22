@@ -34,7 +34,16 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Criar arquivo .env para os testes
+        run: |
+          echo "MONGODB_URI=mongodb://127.0.0.1:27017/gestao-de-alunos-test" >> .env
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+          echo "ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }}" >> .env
+          echo "ADMIN_SENHA=${{ secrets.ADMIN_SENHA }}" >> .env
+          echo "ALUNO_EMAIL=${{ secrets.ALUNO_EMAIL }}" >> .env
+          echo "ALUNO_SENHA=${{ secrets.ALUNO_SENHA }}" >> .env
+          echo "TEST_STUDENT_SENHA=${{ secrets.TEST_STUDENT_SENHA }}" >> .env
+          echo "ADMIN_INVALID_SENHA=${{ secrets.ADMIN_INVALID_SENHA }}" >> .env
+
       - name: Executar testes
         run: npm test
-        env:
-          MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test

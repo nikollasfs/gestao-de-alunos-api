@@ -1,0 +1,30 @@
+{
+  "newStudent": {
+    "nome": "Maria Oliveira",
+    "email": "maria.oliveira@example.com",
+    "matricula": "2025001"
+  },
+  "workSubmission": {
+    "disciplinaId": "disciplina-matematica",
+    "titulo": "Lista de Exercícios de Álgebra",
+    "descricao": "Entrega da lista de exercícios sobre funções e equações."
+  },
+  "loginScenarios": [
+    {
+      "name": "admin com credenciais válidas",
+      "payload": "admin",
+      "expectedStatus": 200
+    },
+    {
+      "name": "admin com senha inválida",
+      "payload": "admin-invalid-password",
+      "expectedStatus": 401,
+      "expectedError": "E-mail ou senha inválidos."
+    },
+    {
+      "name": "aluno com credenciais válidas",
+      "payload": "seeded-student",
+      "expectedStatus": 200
+    }
+  ]
+}
